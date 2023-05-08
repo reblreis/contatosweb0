@@ -33,7 +33,10 @@ public class LoginUserController {
 			UsuarioRepository usuarioRepository = new UsuarioRepository();
 			Usuario usuario = usuarioRepository.findByEmailAndSenha(email, password);
 
-			if (usuario != null) {				
+			if (usuario != null) {
+				
+				request.getSession().setAttribute("usuario", usuario);
+				
 				modelAndView.setViewName("redirect:/admin/home");
 			} 
 			else {
